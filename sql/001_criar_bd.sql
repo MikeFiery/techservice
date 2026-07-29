@@ -45,7 +45,10 @@ CREATE TABLE ordem_de_servico (
     desconto DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
     valor_total DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
     observacoes VARCHAR(500),
-    FOREIGN KEY (id_equipamento) REFERENCES equipamento(id_equipamento)
+    CONSTRAINT fk_ordem_equipamento 
+        FOREIGN KEY (id_equipamento) REFERENCES equipamento(id_equipamento)
+        ON UPDATE CASCADE 
+        ON DELETE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE historico_ordem_servico (
@@ -58,8 +61,3 @@ CREATE TABLE historico_ordem_servico (
     FOREIGN KEY (id_ordem) REFERENCES ordem_de_servico(id_ordem)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-
-ALTER TABLE ordem_de_servico
-    ADD CONSTRAINT fk_ordem_equipamento FOREIGN KEY (id_equipamento) REFERENCES equipamento(id_equipamento),
-    ON UPDATE CASCADE
-    ON DELETE RESTRICT;
