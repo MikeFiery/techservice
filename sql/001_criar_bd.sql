@@ -28,3 +28,20 @@ CREATE TABLE equipamento (
     observações VARCHAR(200),
     FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
 )
+
+CREATE TABLE ordem_de_servico (
+    id_ordem INT AUTO_INCREMENT PRIMARY KEY,
+    id_equipamento INT NOT NULL,
+    data_abertura DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    diagnostico VARCHAR(500) NOT NULL,
+    solucao VARCHAR(500) NOT NULL,
+    status ENUM('ABERTA', 'EM_ANDAMENTO', 'AGUARDANDO_PECAS', 'CONCLUIDA') NOT NULL DEFAULT 'ABERTA',
+    prioridade ENUM('BAIXA', 'MEDIA', 'ALTA') NOT NULL DEFAULT 'MEDIA',
+    valor_servico DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
+    valor_pecas DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
+    desconto DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
+    valor_total DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
+    observacoes VARCHAR(500),
+    FOREIGN KEY (id_equipamento) REFERENCES equipamento(id_equipamento)
+)
+
