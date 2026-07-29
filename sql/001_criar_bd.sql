@@ -15,7 +15,7 @@ CREATE TABLE clientes (
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME NULL,
     deleted_at DATETIME NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE equipamento (
     id_equipamento INT AUTO_INCREMENT PRIMARY KEY,
@@ -27,7 +27,7 @@ CREATE TABLE equipamento (
     data_compra DATE NOT NULL,
     observações VARCHAR(200),
     FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
-)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE ordem_de_servico (
     id_ordem INT AUTO_INCREMENT PRIMARY KEY,
@@ -43,7 +43,7 @@ CREATE TABLE ordem_de_servico (
     valor_total DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
     observacoes VARCHAR(500),
     FOREIGN KEY (id_equipamento) REFERENCES equipamento(id_equipamento)
-)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE historico_ordem_servico (
     id_historico INT AUTO_INCREMENT PRIMARY KEY,
@@ -53,4 +53,5 @@ CREATE TABLE historico_ordem_servico (
     observacoes VARCHAR(500),
     data_alteracao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_ordem) REFERENCES ordem_de_servico(id_ordem)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
