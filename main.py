@@ -11,11 +11,27 @@ def main():
         telefone="910000000"
     )
 
-    cliente = inserir(cliente)
-    print(f"Cliente gravado na base de dados. ID: {cliente.id_cliente}")
+while True:
 
-    print("\nClientes ativos:")
-    for item in listar():
+    print("\n===== SISTEMA LOJA =====")
+
+    print("1 - Inserir Clientes")
+    print("2 - Listar Clientes")
+    print("3 - Editar Clientes")
+    print("0 - Sair")
+
+
+    opcao = input("Escolha uma opção: ")
+
+    if opcao == "1":
+      cliente = inserir(cliente)
+      print(f"Cliente gravado na base de dados. ID: {cliente.id_cliente}")
+
+
+    if opcao == "2":
+
+     print("\nClientes ativos:")
+     for item in listar():
         print(
             item["id_cliente"],
             item["nome"],
