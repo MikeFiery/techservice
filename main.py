@@ -13,7 +13,7 @@ def main():
 
 while True:
 
-    print("\n===== SISTEMA LOJA =====")
+    print("\n=== TechService - Sistema de Gestão de Assistência Técnica ===")
 
     print("1 - Inserir Clientes")
     print("2 - Listar Clientes")
