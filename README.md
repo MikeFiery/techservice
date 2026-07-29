@@ -1,5 +1,5 @@
 
-# TechService - Lenilton Jr
+# TechService - Lenilton Jr.
 
 ## Sistema de Gestão de Assistência Técnica
 
