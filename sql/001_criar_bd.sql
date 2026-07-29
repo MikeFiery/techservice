@@ -45,3 +45,12 @@ CREATE TABLE ordem_de_servico (
     FOREIGN KEY (id_equipamento) REFERENCES equipamento(id_equipamento)
 )
 
+CREATE TABLE historico_ordem_servico (
+    id_historico INT AUTO_INCREMENT PRIMARY KEY,
+    id_ordem INT NOT NULL,
+    status_anterior VARCHAR(50) NOT NULL,
+    status_novo VARCHAR(50) NOT NULL,
+    observacoes VARCHAR(500),
+    data_alteracao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_ordem) REFERENCES ordem_de_servico(id_ordem)
+);
