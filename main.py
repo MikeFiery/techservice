@@ -28,7 +28,7 @@ while True:
       print(f"Cliente gravado na base de dados. ID: {cliente.id_cliente}")
 
 
-    if opcao == "2":
+    elif opcao == "2":
 
      print("\nClientes ativos:")
      for item in listar():
@@ -39,6 +39,15 @@ while True:
             item["telefone"]
         )
 
+    elif opcao == "0":
+    
+            print("Sistema encerrado.")
+    
+            break
 
+    else:
+    
+            print("Opção inválida!")
+            
 if __name__ == "__main__":
     main()
