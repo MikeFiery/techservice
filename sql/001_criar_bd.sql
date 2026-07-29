@@ -16,3 +16,15 @@ CREATE TABLE clientes (
     updated_at DATETIME NULL,
     deleted_at DATETIME NULL
 );
+
+CREATE TABLE equipamento (
+    id_equipamento INT AUTO_INCREMENT PRIMARY KEY,
+    id_cliente INT NOT NULL,
+    tipo VARCHAR(50) NOT NULL,
+    marca VARCHAR(50) NOT NULL,
+    modelo VARCHAR(50) NOT NULL,
+    numero_serie VARCHAR(100) NOT NULL UNIQUE,
+    data_compra DATE NOT NULL,
+    observações VARCHAR(200),
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
+)
