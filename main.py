@@ -33,6 +33,16 @@ while True:
 
       cliente = inserir(Cliente(nome=nome, email=email, telefone=telefone))
       print(f"Cliente gravado na base de dados. ID: {cliente.id_cliente}")
+
+    elif opcao == "2":
+
+        clientes = listar()
+        if clientes:
+            print("\n=== Lista de Clientes ===")
+            for cliente in clientes:
+                print(f"ID: {cliente['id_cliente']}, Nome: {cliente['nome']}, Email: {cliente['email']}, Telefone: {cliente['telefone']}")
+        else:
+            print("Nenhum cliente encontrado.")
     
     elif opcao == "0":
     
