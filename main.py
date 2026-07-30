@@ -26,19 +26,10 @@ while True:
     if opcao == "1":
       cliente = inserir(cliente)
       print(f"Cliente gravado na base de dados. ID: {cliente.id_cliente}")
-
-
-    elif opcao == "2":
-
-     print("\nClientes ativos:")
-     for item in listar():
-        print(
-            item["id_cliente"],
-            item["nome"],
-            item["email"],
-            item["telefone"]
-        )
-
+      nome = input("Digite o nome do cliente: ")
+      email = input("Digite o email do cliente: ")
+      telefone = input("Digite o telefone do cliente: ")
+    
     elif opcao == "0":
     
             print("Sistema encerrado.")
