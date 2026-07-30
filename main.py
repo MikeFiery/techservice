@@ -1,6 +1,6 @@
 from src.models import cliente
 from src.models.cliente import Cliente
-from src.repositories.cliente_repository import atualizar, inserir, listar
+from src.repositories.cliente_repository import atualizar, excluir, inserir, listar
 
 
 def main():
@@ -58,9 +58,8 @@ while True:
 
     elif opcao == "4":
     
-        id_cliente = input("Digite o ID do cliente que deseja excluir: ")
-        cliente = Cliente(nome="", email="", telefone="", id_cliente=id_cliente, status=0)
-        atualizar(cliente)
+        cliente = Cliente(id_cliente=id_cliente)
+        excluir(cliente)
         print(f"Cliente com ID {id_cliente} excluído com sucesso.")
 
         

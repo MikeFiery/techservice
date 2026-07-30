@@ -33,4 +33,5 @@ class Cliente:
 
     def set_telefone(self, telefone):
         self.telefone = telefone
+
     

@@ -1,4 +1,5 @@
 from src.database.conexao import conectar
+from src.models import cliente
 
 def inserir(cliente):
     conexao = conectar()
@@ -58,7 +59,7 @@ def atualizar(cliente):
     cursor.close()
     conexao.close()
 
-def excluir(id_cliente):
+def excluir(cliente):
     conexao = conectar()
     cursor = conexao.cursor()
 
@@ -69,8 +70,9 @@ def excluir(id_cliente):
         WHERE id_cliente = %s
           AND status = 1
     """
+    valores = (cliente.id_cliente)
 
-    cursor.execute(sql, (id_cliente,))
+    cursor.execute(sql, valores)
     conexao.commit()
 
     cursor.close()
