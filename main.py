@@ -19,6 +19,7 @@ while True:
     print("1 - Inserir Clientes")
     print("2 - Listar Clientes")
     print("3 - Editar Clientes")
+    print("4 - Excluir Clientes")
     print("0 - Sair")
 
 
@@ -55,6 +56,12 @@ while True:
         atualizar(cliente)
         print(f"Cliente com ID {id_cliente} atualizado com sucesso.")
 
+    elif opcao == "4":
+    
+        id_cliente = input("Digite o ID do cliente que deseja excluir: ")
+        cliente = Cliente(nome="", email="", telefone="", id_cliente=id_cliente, status=0)
+        atualizar(cliente)
+        print(f"Cliente com ID {id_cliente} excluído com sucesso.")
 
         
     elif opcao == "0":
