@@ -1,3 +1,4 @@
+from src.models import cliente
 from src.models.cliente import Cliente
 from src.repositories.cliente_repository import inserir, listar
 
@@ -24,11 +25,14 @@ while True:
     opcao = input("Escolha uma opção: ")
 
     if opcao == "1":
-      cliente = inserir(cliente)
-      print(f"Cliente gravado na base de dados. ID: {cliente.id_cliente}")
+      
+      
       nome = input("Digite o nome do cliente: ")
       email = input("Digite o email do cliente: ")
       telefone = input("Digite o telefone do cliente: ")
+
+      cliente = inserir(Cliente)
+      print(f"Cliente gravado na base de dados. ID: {cliente.id_cliente}")
     
     elif opcao == "0":
     
