@@ -1,6 +1,6 @@
 from src.models import cliente
 from src.models.cliente import Cliente
-from src.repositories.cliente_repository import inserir, listar
+from src.repositories.cliente_repository import atualizar, inserir, listar
 
 
 def main():
@@ -43,7 +43,20 @@ while True:
                 print(f"ID: {cliente['id_cliente']}, Nome: {cliente['nome']}, Email: {cliente['email']}, Telefone: {cliente['telefone']}")
         else:
             print("Nenhum cliente encontrado.")
+
+    elif opcao == "3":
     
+        id_cliente = input("Digite o ID do cliente que deseja editar: ")
+        nome = input("Digite o novo nome do cliente: ")
+        email = input("Digite o novo email do cliente: ")
+        telefone = input("Digite o novo telefone do cliente: ")
+
+        cliente = Cliente(nome=nome, email=email, telefone=telefone, id_cliente=id_cliente)
+        atualizar(cliente)
+        print(f"Cliente com ID {id_cliente} atualizado com sucesso.")
+
+
+        
     elif opcao == "0":
     
             print("Sistema encerrado.")
