@@ -22,4 +22,15 @@ class Cliente:
     def get_status(self):
         return self.status
 
+    def set_status(self, status):
+        self.status = status
+
+    def set_nome(self, nome):
+        self.nome = nome    
+
+    def set_email(self, email):
+        self.email = email
+
+    def set_telefone(self, telefone):
+        self.telefone = telefone
     
