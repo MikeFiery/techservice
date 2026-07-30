@@ -31,7 +31,7 @@ while True:
       email = input("Digite o email do cliente: ")
       telefone = input("Digite o telefone do cliente: ")
 
-      cliente = inserir(Cliente)
+      cliente = inserir(Cliente(nome=nome, email=email, telefone=telefone))
       print(f"Cliente gravado na base de dados. ID: {cliente.id_cliente}")
     
     elif opcao == "0":
