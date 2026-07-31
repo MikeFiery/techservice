@@ -118,7 +118,6 @@ while True:
         diagnostico = input("Digite o diagnóstico: ")
         status = input("Digite o status (Em andamento, Concluída, Cancelada): ")
         solucao = input("Digite a solução: ")
-        data_abertura = input("Digite a data de abertura (YYYY-MM-DD): ")
         prioridade = input("Digite a prioridade (Baixa, Média, Alta): ")
         valor_servico = float(input("Digite o valor do serviço: "))
         valor_pecas = float(input("Digite o valor das peças: "))
@@ -127,10 +126,10 @@ while True:
         observacoes = input("Digite as observações: ")
 
         ordem = Ordem(
+            id_equipamento=id_equipamento,
             diagnostico=diagnostico,
             status=status,
             solucao=solucao,
-            data_abertura=data_abertura,
             prioridade=prioridade,
             valor_servico=valor_servico,
             valor_pecas=valor_pecas,
@@ -139,7 +138,20 @@ while True:
             observacoes=observacoes
         )
 
-        ordem_criada = inserir(ordem)
+        ordem_criada = inserir(
+            Ordem(
+                id_equipamento=id_equipamento,
+                diagnostico=diagnostico,
+                status=status,
+                solucao=solucao,
+                prioridade=prioridade,
+                valor_servico=valor_servico,
+                valor_pecas=valor_pecas,
+                valor_total=valor_total,
+                desconto=desconto,
+                observacoes=observacoes,
+            )
+        )
         print(f"Ordem de serviço criada com sucesso. ID da ordem: {ordem_criada.id_ordem}")
     
     elif opcao == "0":
