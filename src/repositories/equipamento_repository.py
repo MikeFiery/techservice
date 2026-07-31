@@ -1,15 +1,22 @@
 from src.database.conexao import conectar
-from src.models import equipamento
 
-def inserir2(equipamento):
+
+def inserir(equipamento):
     conexao = conectar()
     cursor = conexao.cursor()
 
     sql = """
-        INSERT INTO equipamento (tipo, marca, modelo, numero_serie)
-        VALUES (%s, %s, %s, %s)
+        INSERT INTO equipamento (id_cliente, tipo, marca, modelo, numero_serie, data_compra)
+        VALUES (%s, %s, %s, %s, %s, CURDATE())
     """
-    valores2 = (equipamento.tipo, equipamento.marca, equipamento.modelo, equipamento.numero_serie)
+    id_cliente = getattr(equipamento, "id_cliente", None) or 1
+    valores2 = (
+        id_cliente,
+        equipamento.tipo,
+        equipamento.marca,
+        equipamento.modelo,
+        equipamento.numero_serie,
+    )
 
     cursor.execute(sql, valores2)
     conexao.commit()
@@ -19,7 +26,8 @@ def inserir2(equipamento):
     conexao.close()
     return equipamento
 
-def listar(equipamento):
+
+def listar():
     conexao = conectar()
     cursor = conexao.cursor(dictionary=True)
 
@@ -30,11 +38,12 @@ def listar(equipamento):
     """
 
     cursor.execute(sql)
-    equipamento = cursor.fetchall()
+    equipamentos = cursor.fetchall()
 
     cursor.close()
     conexao.close()
-    return equipamento
+    return equipamentos
+
 
 def atualizar(equipamento):
     conexao = conectar()
@@ -45,11 +54,16 @@ def atualizar(equipamento):
         SET tipo = %s,
             marca = %s,
             modelo = %s,
-            numero_serie = %s,
-            data_compra = NOW()
+            numero_serie = %s
         WHERE id_equipamento = %s
     """
-    valores = (equipamento.tipo, equipamento.marca, equipamento.modelo, equipamento.numero_serie, equipamento.id_equipamento)
+    valores = (
+        equipamento.tipo,
+        equipamento.marca,
+        equipamento.modelo,
+        equipamento.numero_serie,
+        equipamento.id_equipamento,
+    )
 
     cursor.execute(sql, valores)
     conexao.commit()
@@ -57,3 +71,18 @@ def atualizar(equipamento):
     cursor.close()
     conexao.close()
 
+def excluir(equipamento):
+    conexao = conectar()
+    cursor = conexao.cursor()
+
+    sql = """
+        DELETE FROM equipamento
+        WHERE id_equipamento = %s
+    """
+    valores = (equipamento.id_equipamento)
+
+    cursor.execute(sql, valores)
+    conexao.commit()
+
+    cursor.close()
+    conexao.close()

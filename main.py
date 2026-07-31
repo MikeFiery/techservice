@@ -3,7 +3,7 @@ from src.models.cliente import Cliente
 from src.repositories.cliente_repository import atualizar, excluir, inserir, listar
 from src.models import equipamento
 from src.models.equipamento import Equipamento
-from src.repositories.equipamento_repository import atualizar, inserir2, listar
+from src.repositories.equipamento_repository import atualizar, inserir, listar, excluir
 
 
 def main():
@@ -26,6 +26,7 @@ while True:
     print("5 - Inserir Equipamentos")
     print("6 - Listar Equipamentos")
     print("7 - Editar Equipamentos")
+    print("8 - Excluir Equipamentos")
     print("0 - Sair")
 
 
@@ -75,7 +76,7 @@ while True:
         modelo = input("Digite o modelo do equipamento: ")
         numero_serie = input("Digite o número de série do equipamento: ")
 
-        equipamento = inserir2(Equipamento(tipo=tipo, marca=marca, modelo=modelo, numero_serie=numero_serie))
+        equipamento = inserir(Equipamento(tipo=tipo, marca=marca, modelo=modelo, numero_serie=numero_serie))
         print(f"Equipamento gravado na base de dados. ID: {equipamento.id_equipamento}")
 
 
@@ -98,6 +99,13 @@ while True:
         equipamento = Equipamento(tipo=tipo, marca=marca, modelo=modelo, numero_serie=numero_serie, id_equipamento=id_equipamento)
         atualizar(equipamento)
         print(f"Equipamento com ID {id_equipamento} atualizado com sucesso.")
+
+    elif opcao == "8":
+        id_equipamento = input("Digite o ID do equipamento que deseja excluir: ")
+
+        equipamento = Equipamento(id_equipamento=id_equipamento)
+        excluir(equipamento)
+        print(f"Equipamento com ID {id_equipamento} excluído com sucesso.")    
                    
     elif opcao == "0":
     
