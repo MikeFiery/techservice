@@ -4,6 +4,9 @@ from src.repositories.cliente_repository import atualizar, excluir, inserir, lis
 from src.models import equipamento
 from src.models.equipamento import Equipamento
 from src.repositories.equipamento_repository import atualizar, inserir, listar, excluir
+from src.models import ordem
+from src.models.ordem import Ordem
+from src.repositories.ordem_repository import inserir
 
 
 def main():
@@ -27,6 +30,8 @@ while True:
     print("6 - Listar Equipamentos")
     print("7 - Editar Equipamentos")
     print("8 - Excluir Equipamentos")
+    print("9 - Criar ordem de serviço")
+    print
     print("0 - Sair")
 
 
@@ -106,7 +111,37 @@ while True:
         equipamento = Equipamento(id_equipamento=id_equipamento)
         excluir(equipamento)
         print(f"Equipamento com ID {id_equipamento} excluído com sucesso.")    
-                   
+
+    elif opcao == "9":
+        
+        id_equipamento = input("Digite o ID do equipamento: ")
+        diagnostico = input("Digite o diagnóstico: ")
+        status = input("Digite o status (Em andamento, Concluída, Cancelada): ")
+        solucao = input("Digite a solução: ")
+        data_abertura = input("Digite a data de abertura (YYYY-MM-DD): ")
+        prioridade = input("Digite a prioridade (Baixa, Média, Alta): ")
+        valor_servico = float(input("Digite o valor do serviço: "))
+        valor_pecas = float(input("Digite o valor das peças: "))
+        valor_total = float(input("Digite o valor total: "))
+        desconto = float(input("Digite o desconto: "))
+        observacoes = input("Digite as observações: ")
+
+        ordem = Ordem(
+            diagnostico=diagnostico,
+            status=status,
+            solucao=solucao,
+            data_abertura=data_abertura,
+            prioridade=prioridade,
+            valor_servico=valor_servico,
+            valor_pecas=valor_pecas,
+            valor_total=valor_total,
+            desconto=desconto,
+            observacoes=observacoes
+        )
+
+        ordem_criada = inserir(ordem)
+        print(f"Ordem de serviço criada com sucesso. ID da ordem: {ordem_criada.id_ordem}")
+    
     elif opcao == "0":
     
             print("Sistema encerrado.")
